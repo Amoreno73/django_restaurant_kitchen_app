@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Restaurant Menu</h1>
+        {% for meal in meals %}
+        <!-- we add the .1 to keep the second item of the meals tuple -->
+        <!-- slide 418 -->
+        <h2>{{ meal.1 }}</h2>
+        {% for row in item_list %}
+            {{ row.meal }}
+            {{ row.description }}
+        {% endfor %}
+        {% endfor %}
+</body>
+</html>
+

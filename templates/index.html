@@ -9,13 +9,19 @@
     <h1>Restaurant Menu</h1>
         {% for meal in meals %}
         <!-- we add the .1 to keep the second item of the meals tuple -->
-        <!-- slide 418 -->
-        <h2>{{ meal.1 }}</h2>
-        {% for row in item_list %}
-            {{ row.meal }}
-            {{ row.description }}
-        {% endfor %}
+        <!-- look at models.py STATUS variable -->
+            <h2>{{ meal.1 }}</h2>
+                {% for row in item_list %}
+                    {% if row.meal_type == meal.0 %}
+                        {% if row.status == 0 %}
+                            <a href="{% url 'menu_item' row.pk %}"><h3><del>{{ row.meal }}</del></h3></a>
+                            <p>{{ row.description }}</p>
+                        {% else %} <!-- this else allows us to display the rest of the items-->
+                            <a href="{% url 'menu_item' row.pk %}"><h3>{{ row.meal }}</h3></a>
+                            <p>{{ row.description }}</p>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
         {% endfor %}
 </body>
 </html>
-

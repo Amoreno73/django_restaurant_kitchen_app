@@ -13,8 +13,8 @@ class MenuList(generic.ListView):
     template_name = "index.html"
 # through context, we can send python to html 
 # specifically, data from views to templates html
-    def get_context_data(self):
-        context = {} # we no longer have hard-coded entries
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs) # we no longer have hard-coded entries
         context["meals"] = MEAL_TYPE
         return context
 
